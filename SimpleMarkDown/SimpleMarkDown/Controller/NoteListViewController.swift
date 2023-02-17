@@ -19,6 +19,8 @@ class NoteListViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
+        
+        loadNotes()
     }
     
     
@@ -36,7 +38,7 @@ class NoteListViewController: UITableViewController {
             
             self.notePagesArray.append(newNote) // add the new note to the array of notes
             
-//            self.saveNotes()
+            self.saveNotes()
         }
         
         alert.addTextField { (alertTextField) in // add to the alert a text field, and its properties are going to be set in this alertTextField object
@@ -75,6 +77,27 @@ class NoteListViewController: UITableViewController {
     
     
     //MARK: - Data Manipulation Methods
+    
+    func saveNotes() {
+        
+        do {
+            try context.save()
+        } catch {
+            print("Error saving note: \(error)")
+        }
+        self.tableView.reloadData()
+    }
+    
+    func loadNotes(with request: NSFetchRequest<Note> = Note.fetchRequest()) { // either take a request as a parameter or use the default new request
+        
+        do {
+            notePagesArray = try context.fetch(request)
+        } catch {
+            print("Error fetching data (notes) from context: \(error)")
+        }
+        
+        tableView.reloadData()
+    }
     
     
     
