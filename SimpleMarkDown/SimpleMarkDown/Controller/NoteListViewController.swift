@@ -25,8 +25,32 @@ class NoteListViewController: UITableViewController {
     //MARK: - Add Button Method
     @IBAction func addButtonPressed(_ sender: UIBarButtonItem) {
         
+        var textField = UITextField() // initialize a text field that the user can type into
+        
+        let alert = UIAlertController(title: "Add New Note Title", message: "", preferredStyle: .alert)
+        
+        let action = UIAlertAction(title: "Add Note", style: .default) { (action) in
+            
+            let newNote = Note(context: self.context)
+            newNote.title = textField.text! // create note and set the title
+            
+            self.notePagesArray.append(newNote) // add the new note to the array of notes
+            
+//            self.saveNotes()
+        }
+        
+        alert.addTextField { (alertTextField) in // add to the alert a text field, and its properties are going to be set in this alertTextField object
+            
+            alertTextField.placeholder = "Create a new note"
+            textField = alertTextField // set this as the textfield before the user adds text
+        }
+        
+        alert.addAction(action)
+        
+        present(alert, animated: true, completion: nil)
     }
-    
+        
+        
     
     //MARK: - TableView DataSource Methods
     
