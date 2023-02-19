@@ -118,7 +118,7 @@ class NoteListViewController: UITableViewController {
             if (segue.identifier == "goToNotePage") {
                 let destinationViewController = segue.destination as! NotePageViewController // specify the exact datatype the destination will be
                 
-                if  let indexPath = tableView.indexPathForSelectedRow {
+                if let indexPath = tableView.indexPathForSelectedRow {
                     destinationViewController.selectedNote = notePagesArray[indexPath.row]
                 }
                 

@@ -8,7 +8,7 @@
 import UIKit
 import CoreData
 
-class NotePageViewController: UITableViewController {
+class NotePageViewController: UIViewController {
     
     var selectedNote: Note? {
         didSet { // do the following once this category is set by the prepare method inside the CategoryViewController
@@ -20,4 +20,14 @@ class NotePageViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
     }
+    
+    
+    //MARK: - Page View Methods
+    
+}
+
+
+extension NotePageViewController: UITextViewDelegate {
+    
+    
 }
