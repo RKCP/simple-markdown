@@ -10,6 +10,13 @@ import CoreData
 
 class NotePageViewController: UITableViewController {
     
+    var selectedNote: Note? {
+        didSet { // do the following once this category is set by the prepare method inside the CategoryViewController
+            
+            //loadItems()
+        }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
     }
