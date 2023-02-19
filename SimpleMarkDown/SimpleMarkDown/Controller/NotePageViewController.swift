@@ -10,6 +10,8 @@ import CoreData
 
 class NotePageViewController: UIViewController {
     
+    @IBOutlet weak var textBox: UITextView!
+    
     var selectedNote: Note? {
         didSet { // do the following once this category is set by the prepare method inside the CategoryViewController
             
@@ -19,6 +21,7 @@ class NotePageViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
     }
     
     
@@ -26,6 +29,11 @@ class NotePageViewController: UIViewController {
     
 }
 
+// -------------goals-------------
+// pull up keyboard when note is loaded
+// save note when user exits the text box/note screen
+// make noteList title appear as title of this note
+// link note to a list
 
 extension NotePageViewController: UITextViewDelegate {
     

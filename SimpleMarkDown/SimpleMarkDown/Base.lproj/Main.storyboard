@@ -102,6 +102,9 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Dynamic Title" id="FoC-MI-dfg"/>
+                    <connections>
+                        <outlet property="textBox" destination="74x-3j-oFj" id="D1a-oK-0e8"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="eWX-VN-OWw" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

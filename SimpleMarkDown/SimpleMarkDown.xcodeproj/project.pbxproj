@@ -19,6 +19,7 @@
 		64BDE7F3299EB36600561DE7 /* SimpleMarkDownUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64BDE7F2299EB36600561DE7 /* SimpleMarkDownUITestsLaunchTests.swift */; };
 		64BDE803299EB47500561DE7 /* NotePageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64BDE802299EB47500561DE7 /* NotePageViewController.swift */; };
 		64BDE806299EB51500561DE7 /* DataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 64BDE804299EB51500561DE7 /* DataModel.xcdatamodeld */; };
+		726CEBD84FCFDB55E869B5BA /* Pods_SimpleMarkDown.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A36C423A99FE2FE94E0B4480 /* Pods_SimpleMarkDown.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -39,6 +40,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		093C4C22E303C68F466786D6 /* Pods-SimpleMarkDown.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SimpleMarkDown.release.xcconfig"; path = "Target Support Files/Pods-SimpleMarkDown/Pods-SimpleMarkDown.release.xcconfig"; sourceTree = "<group>"; };
 		64BDE7C9299EB36500561DE7 /* SimpleMarkDown.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SimpleMarkDown.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		64BDE7CC299EB36500561DE7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		64BDE7CE299EB36500561DE7 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -55,6 +57,8 @@
 		64BDE7F2299EB36600561DE7 /* SimpleMarkDownUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimpleMarkDownUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		64BDE802299EB47500561DE7 /* NotePageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotePageViewController.swift; sourceTree = "<group>"; };
 		64BDE805299EB51500561DE7 /* DataModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = DataModel.xcdatamodel; sourceTree = "<group>"; };
+		A36C423A99FE2FE94E0B4480 /* Pods_SimpleMarkDown.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SimpleMarkDown.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		C593413E8749C398F6D51F89 /* Pods-SimpleMarkDown.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SimpleMarkDown.debug.xcconfig"; path = "Target Support Files/Pods-SimpleMarkDown/Pods-SimpleMarkDown.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -62,6 +66,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				726CEBD84FCFDB55E869B5BA /* Pods_SimpleMarkDown.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -82,6 +87,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		6463A7B7A3C4CBC1FF643D05 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				A36C423A99FE2FE94E0B4480 /* Pods_SimpleMarkDown.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		64BDE7C0299EB36500561DE7 = {
 			isa = PBXGroup;
 			children = (
@@ -89,6 +102,8 @@
 				64BDE7E5299EB36600561DE7 /* SimpleMarkDownTests */,
 				64BDE7EF299EB36600561DE7 /* SimpleMarkDownUITests */,
 				64BDE7CA299EB36500561DE7 /* Products */,
+				996CE197E04CFDBA82459B3E /* Pods */,
+				6463A7B7A3C4CBC1FF643D05 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -160,6 +175,16 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
+		996CE197E04CFDBA82459B3E /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				C593413E8749C398F6D51F89 /* Pods-SimpleMarkDown.debug.xcconfig */,
+				093C4C22E303C68F466786D6 /* Pods-SimpleMarkDown.release.xcconfig */,
+			);
+			name = Pods;
+			path = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -167,9 +192,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 64BDE7F6299EB36600561DE7 /* Build configuration list for PBXNativeTarget "SimpleMarkDown" */;
 			buildPhases = (
+				BA1B79E72410E49B3373C343 /* [CP] Check Pods Manifest.lock */,
 				64BDE7C5299EB36500561DE7 /* Sources */,
 				64BDE7C6299EB36500561DE7 /* Frameworks */,
 				64BDE7C7299EB36500561DE7 /* Resources */,
+				BBDF4C76181F14F62C49E230 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -285,6 +312,48 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		BA1B79E72410E49B3373C343 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-SimpleMarkDown-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		BBDF4C76181F14F62C49E230 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-SimpleMarkDown/Pods-SimpleMarkDown-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-SimpleMarkDown/Pods-SimpleMarkDown-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-SimpleMarkDown/Pods-SimpleMarkDown-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		64BDE7C5299EB36500561DE7 /* Sources */ = {
@@ -468,6 +537,7 @@
 		};
 		64BDE7F7299EB36600561DE7 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = C593413E8749C398F6D51F89 /* Pods-SimpleMarkDown.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -495,6 +565,7 @@
 		};
 		64BDE7F8299EB36600561DE7 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 093C4C22E303C68F466786D6 /* Pods-SimpleMarkDown.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
