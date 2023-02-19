@@ -55,7 +55,7 @@
         <!--Dynamic Title-->
         <scene sceneID="qg9-ux-EWt">
             <objects>
-                <viewController id="LbI-oH-GRS" sceneMemberID="viewController">
+                <viewController id="LbI-oH-GRS" customClass="NotePageViewController" customModule="SimpleMarkDown" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="xsq-zG-Xm7">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -102,6 +102,9 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Dynamic Title" id="FoC-MI-dfg"/>
+                    <connections>
+                        <outlet property="textBox" destination="74x-3j-oFj" id="D1a-oK-0e8"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="eWX-VN-OWw" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

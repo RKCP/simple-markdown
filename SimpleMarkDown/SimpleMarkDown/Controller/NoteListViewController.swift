@@ -55,7 +55,6 @@ class NoteListViewController: UITableViewController {
         
     
     //MARK: - TableView DataSource Methods
-    
     // How many rows in the tableview (list of notes) to populate
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return notePagesArray.count
@@ -77,7 +76,6 @@ class NoteListViewController: UITableViewController {
     
     
     //MARK: - Data Manipulation Methods
-    
     func saveNotes() {
         
         do {
@@ -102,7 +100,30 @@ class NoteListViewController: UITableViewController {
     
     
     //MARK: - TableView Delegate Methods
+    // what should happen when we click on one of the cells in the Category Table View
     
+    // segue on click, and load the associated NotePage of that NoteList into the NotePage Screen Tableview
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        self.performSegue(withIdentifier: "goToNotePage", sender: self)
+        tableView.deselectRow(at: indexPath, animated: true)
+    }
+    
+    
+    //MARK: - Segue Method
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+            
+            // usually use case here if many screen options.
+            if (segue.identifier == "goToNotePage") {
+                let destinationViewController = segue.destination as! NotePageViewController // specify the exact datatype the destination will be
+                
+                if let indexPath = tableView.indexPathForSelectedRow {
+                    destinationViewController.selectedNote = notePagesArray[indexPath.row]
+                }
+                
+                
+            }
+        }
     
 }
-
