@@ -6,5 +6,6 @@ target 'SimpleMarkDown' do
   # Pods for SimpleMarkDown
   
   pod 'CLTypingLabel'
+  pod 'IQKeyboardManagerSwift'
 
 end
