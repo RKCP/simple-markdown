@@ -119,7 +119,7 @@ class NoteListViewController: UITableViewController {
                 let destinationViewController = segue.destination as! NotePageViewController // specify the exact datatype the destination will be
                 
                 if let indexPath = tableView.indexPathForSelectedRow {
-                    destinationViewController.selectedNote = notePagesArray[indexPath.row]
+                    destinationViewController.selectedNote = notePagesArray[indexPath.row] // the selectedNote we want to set is the note from the array in this class, with the index of whatever the user selects
                 }
                 
                 
