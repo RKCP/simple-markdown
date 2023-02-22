@@ -106,6 +106,7 @@ class TopicViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
+        saveNotes()
         self.performSegue(withIdentifier: "goToNotePage", sender: self)
         tableView.deselectRow(at: indexPath, animated: true)
     }
@@ -120,6 +121,7 @@ class TopicViewController: UITableViewController {
                 
                 if let indexPath = tableView.indexPathForSelectedRow {
                     destinationViewController.selectedNote = notePagesArray[indexPath.row] // the selectedNote we want to set is the note from the array in this class, with the index of whatever the user selects
+                    destinationViewController.topicIndex = indexPath.row
                 }
                 
                 

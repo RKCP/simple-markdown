@@ -104,6 +104,7 @@
                     </view>
                     <navigationItem key="navigationItem" title="Dynamic Title" id="FoC-MI-dfg"/>
                     <connections>
+                        <outlet property="navBarTitle" destination="FoC-MI-dfg" id="3Wq-v1-9wT"/>
                         <outlet property="textBox" destination="74x-3j-oFj" id="D1a-oK-0e8"/>
                     </connections>
                 </viewController>

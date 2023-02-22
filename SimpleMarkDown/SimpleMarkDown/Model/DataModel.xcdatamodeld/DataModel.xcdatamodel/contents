@@ -1,16 +1,12 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="20086" systemVersion="21E230" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
-    <entity name="Note" representedClassName="Note" syncable="YES" codeGenerationType="class">
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="21513" systemVersion="22D68" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="Note" representedClassName="Note" parentEntity="Topic" syncable="YES" codeGenerationType="class">
         <attribute name="text" attributeType="String"/>
         <attribute name="title" attributeType="String"/>
         <relationship name="parentTopic" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Topic" inverseName="notePage" inverseEntity="Topic"/>
     </entity>
     <entity name="Topic" representedClassName="Topic" syncable="YES" codeGenerationType="class">
         <attribute name="name" attributeType="String"/>
-        <relationship name="notePage" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Note" inverseName="parentTopic" inverseEntity="Note"/>
+        <relationship name="notePage" maxCount="1" deletionRule="Nullify" destinationEntity="Note" inverseName="parentTopic" inverseEntity="Note"/>
     </entity>
-    <elements>
-        <element name="Note" positionX="-63" positionY="-18" width="128" height="88"/>
-        <element name="Topic" positionX="-315.78515625" positionY="-7.05859375" width="128" height="73"/>
-    </elements>
 </model>
