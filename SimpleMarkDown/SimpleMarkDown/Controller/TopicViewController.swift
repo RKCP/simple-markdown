@@ -8,7 +8,7 @@
 import UIKit
 import CoreData
 
-class NoteListViewController: UITableViewController {
+class TopicViewController: UITableViewController {
     
     var notePagesArray = [Note]() // note list view should display all the possible notes. these notes are stored this array.
     
@@ -65,7 +65,7 @@ class NoteListViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let note = notePagesArray[indexPath.row] // each single note in the array. this method automatically loops
         
-        let cell = tableView.dequeueReusableCell(withIdentifier: "NoteListCell", for: indexPath) // add each category to the cell in the TableView
+        let cell = tableView.dequeueReusableCell(withIdentifier: "TopicCell", for: indexPath) // add each category to the cell in the TableView
         
         cell.textLabel?.text = note.title // set the cell as the tableName
         
