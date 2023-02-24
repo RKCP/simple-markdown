@@ -2,10 +2,9 @@
 <model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="21513" systemVersion="22D68" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
     <entity name="Note" representedClassName="Note" parentEntity="Topic" syncable="YES" codeGenerationType="class">
         <attribute name="text" optional="YES" attributeType="String"/>
-        <attribute name="title" attributeType="String"/>
+        <attribute name="title" optional="YES" attributeType="String"/>
     </entity>
     <entity name="Topic" representedClassName="Topic" syncable="YES" codeGenerationType="class">
         <attribute name="name" attributeType="String"/>
-        <relationship name="parentTopic" maxCount="1" deletionRule="Nullify" destinationEntity="Note"/>
     </entity>
 </model>

@@ -13,47 +13,48 @@ class NotePageViewController: UIViewController {
     @IBOutlet weak var textBox: UITextView!
     @IBOutlet weak var navBarTitle: UINavigationItem!
     
-    var selectedNote = Note()
+//    var selectedNote: Note? {
+//        didSet { // do the following once this category is set by the prepare method inside the CategoryViewController
+//            
+//            //loadAssociatedNote()
+//        }
+//    }
+//    
+//    var topicIndex: Int?
+//    
+//    var selectedTopic = Topic()
     
-    var topicIndex: Int?
-    
-    var selectedTopic: Topic? {
-        didSet { // do the following once this category is set by the prepare method inside the CategoryViewController
-            
-            //loadItems()
-        }
-    }
-    
-    let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext //to access the CoreData methods in our App Delegate.
+    var newNote = Note()
+//    
+//    let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext //to access the CoreData methods in our App Delegate.
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        loadNote()
+        //loadAssociatedNote()
         
-        navBarTitle.title = "TEEMO"
+        //navBarTitle.title = "TEEMO"
         
-        print(FileManager.default.urls(for: .documentDirectory, in: .userDomainMask))
+        //print(FileManager.default.urls(for: .documentDirectory, in: .userDomainMask))
         
     }
     
     
     
     //MARK: - Load Data function
-    func loadNote(with request: NSFetchRequest<Note> = Note.fetchRequest()) { // default is to create a new fetchRequest() but if we pass one, in the with external parameter, it will use that fetchRequest instead. (Such as the one used with the searchBar)
-        
-        do {
-            let notesList = try context.fetch(request)
-            // since the relationship is one to one, there should only be 1 selected note.
-            // debug line above to see what is returned from the fetch. what is in the array?
-            print(topicIndex)
-            print("asdasd")
-        } catch {
-            print("Error fetching data (note) from context: \(error)")
-        }
-    }
-    
+//    func loadAssociatedNote(with request: NSFetchRequest<Note> = Note.fetchRequest()) { // default is to create a new fetchRequest() but if we pass one, in the with external parameter, it will use that fetchRequest instead. (Such as the one used with the searchBar)
+//
+//        do {
+//            selectedNote = try context.fetch(request)[topicIndex!]
+//            // since the relationship is one to one, there should only be 1 selected note.
+//            // debug line above to see what is returned from the fetch. what is in the array?
+//            print("asdasd")
+//        } catch {
+//            print("Error fetching data (note) from context: \(error)")
+//        }
+//    }
+//
     
     //MARK: - Page View Methods
     
