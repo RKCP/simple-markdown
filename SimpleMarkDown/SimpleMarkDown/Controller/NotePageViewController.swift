@@ -34,6 +34,8 @@ class NotePageViewController: UIViewController {
         
         navBarTitle.title = "TEEMO"
         
+        print(FileManager.default.urls(for: .documentDirectory, in: .userDomainMask))
+        
     }
     
     
