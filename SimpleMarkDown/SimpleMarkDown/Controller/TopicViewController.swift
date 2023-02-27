@@ -11,7 +11,6 @@ import CoreData
 class TopicViewController: UITableViewController {
     
     var topicArray = [Topic]() // Topic view should display all the possible topics. The topics are stored this array.
-    //var newNote = Note() // cant initialize a note outside the where the note context is....?
     
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext //to access the CoreData methods in our App Delegate.
     
@@ -39,6 +38,7 @@ class TopicViewController: UITableViewController {
             // set the details of the topic
             let newTopic = Topic(context: self.context)
             newTopic.name = textField.text! // create topic and set the title
+            self.tempNoteTitle = textField.text!
 
             self.topicArray.append(newTopic) // add the new note to the array of notes
 
@@ -100,40 +100,35 @@ class TopicViewController: UITableViewController {
 
         tableView.reloadData()
     }
-//
-//
-//
-//    //MARK: - TableView Delegate Methods
-//    // what should happen when we click on one of the cells in the Category Table View
-//
-//    // segue on click, and load the associated NotePage of that NoteList into the NotePage Screen Tableview
-//
-//    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-//
-//        self.performSegue(withIdentifier: "goToNotePage", sender: self)
-//        tableView.deselectRow(at: indexPath, animated: true)
-//    }
-//
-//
-//    //MARK: - Segue Method
-//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-//
-//            // usually use case here if many screen options.
-//            if (segue.identifier == "goToNotePage") {
-//                let destinationViewController = segue.destination as! NotePageViewController // specify the exact datatype the destination will be
-//
-//                if let indexPath = tableView.indexPathForSelectedRow {
-////                    destinationViewController.selectedTopic = topicArray[indexPath.row] // the selectedNote we want to set is the note from the array in this class, with the index of whatever the user selects
-////                    destinationViewController.topicIndex = indexPath.row
-////                    destinationViewController.selectedNote = newNote
-    ///            // set the details of the created new note that we will pass to the NotePageViewController
-    //            self.newNote.title = textField.text!
-    //            self.newNote.text = ""
-                //self.newNote.parentTopic = newTopic
-//                }
-//
-//
-//            }
-//        }
-//
+
+
+
+    //MARK: - TableView Delegate Methods
+    // what should happen when we click on one of the cells in the Category Table View
+
+    // segue on click, and load the associated NotePage of that NoteList into the NotePage Screen Tableview
+
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+
+        self.performSegue(withIdentifier: "goToNotePage", sender: self)
+        tableView.deselectRow(at: indexPath, animated: true)
+    }
+
+
+    //MARK: - Segue Method
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+
+            // usually use case here if many screen options.
+            if (segue.identifier == "goToNotePage") {
+                let destinationViewController = segue.destination as! NotePageViewController // specify the exact datatype the destination will be
+
+                if let indexPath = tableView.indexPathForSelectedRow {
+                    destinationViewController.selectedTopic = topicArray[indexPath.row] // the selectedNote we want to set is the note from the array in this class, with the index of whatever the user selects
+                    destinationViewController.topicIndex = indexPath.row
+                }
+
+
+            }
+        }
+
 }

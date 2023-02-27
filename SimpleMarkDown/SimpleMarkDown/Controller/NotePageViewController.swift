@@ -20,24 +20,24 @@ class NotePageViewController: UIViewController {
 //        }
 //    }
 //    
-//    var topicIndex: Int?
+    var topicIndex: Int?
 //    
-//    var selectedTopic = Topic()
+    var selectedTopic: Topic?
     
-    var newNote = Note()
+    var newNote: Note?
 //    
 //    let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext //to access the CoreData methods in our App Delegate.
-    
+    // set the details of the created new note that we will pass to the NotePageViewController
+//    destinationViewController.newNote.title = tempNoteTitle
+//    destinationViewController.newNote.text = ""
+//                    destinationViewController.newNote.parentTopic =
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         //loadAssociatedNote()
         
-        //navBarTitle.title = "TEEMO"
-        
-        //print(FileManager.default.urls(for: .documentDirectory, in: .userDomainMask))
-        
+        navBarTitle.title = "newNote.title!"
     }
     
     
