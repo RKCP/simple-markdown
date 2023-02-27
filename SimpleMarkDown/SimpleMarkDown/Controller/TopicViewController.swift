@@ -16,13 +16,17 @@ class TopicViewController: UITableViewController {
     
     var tempNoteTitle: String?
     var tempNoteParent: Topic?
+    
+    // note associated with this topic...
+    var associatedNote: Note?
 
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         
         loadTopics()
-        print(FileManager.default.urls(for: .documentDirectory, in: .userDomainMask))
+//        print(FileManager.default.urls(for: .documentDirectory, in: .userDomainMask))
+        
     }
     
 //
@@ -38,6 +42,10 @@ class TopicViewController: UITableViewController {
             // set the details of the topic
             let newTopic = Topic(context: self.context)
             newTopic.name = textField.text! // create topic and set the title
+//            let newNote = Note()
+//            self.associatedNote = newNote
+//            newTopic.childNote = self.associatedNote
+            
             self.tempNoteTitle = textField.text!
 
             self.topicArray.append(newTopic) // add the new note to the array of notes
@@ -125,6 +133,8 @@ class TopicViewController: UITableViewController {
                 if let indexPath = tableView.indexPathForSelectedRow {
                     destinationViewController.selectedTopic = topicArray[indexPath.row] // the selectedNote we want to set is the note from the array in this class, with the index of whatever the user selects
                     destinationViewController.topicIndex = indexPath.row
+                    destinationViewController.noteToDisplay = associatedNote
+                    print("jbh n")
                 }
 
 
