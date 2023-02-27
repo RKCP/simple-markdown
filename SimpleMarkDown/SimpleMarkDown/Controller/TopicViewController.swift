@@ -40,14 +40,9 @@ class TopicViewController: UITableViewController {
             let newTopic = Topic(context: self.context)
             newTopic.name = textField.text! // create topic and set the title
 
-            // set the details of the created new note that we will pass to the NotePageViewController
-//            self.newNote.title = textField.text!
-//            self.newNote.text = ""
-            //self.newNote.parentTopic = newTopic
-
             self.topicArray.append(newTopic) // add the new note to the array of notes
 
-//            self.saveTopics()
+            self.saveTopics()
         }
 
         alert.addTextField { (alertTextField) in // add to the alert a text field, and its properties are going to be set in this alertTextField object
@@ -85,15 +80,15 @@ class TopicViewController: UITableViewController {
 //
 //
 //    //MARK: - Data Manipulation Methods
-//    func saveTopics() {
-//
-//        do {
-//            try context.save()
-//        } catch {
-//            print("Error saving Topic: \(error)")
-//        }
-//        self.tableView.reloadData()
-//    }
+    func saveTopics() {
+
+        do {
+            try context.save()
+        } catch {
+            print("Error saving Topic: \(error)")
+        }
+        self.tableView.reloadData()
+    }
 //
 ////    func loadTopics(with request: NSFetchRequest<Topic> = Topic.fetchRequest()) { // either take a request as a parameter or use the default new request
 ////
@@ -131,6 +126,10 @@ class TopicViewController: UITableViewController {
 ////                    destinationViewController.selectedTopic = topicArray[indexPath.row] // the selectedNote we want to set is the note from the array in this class, with the index of whatever the user selects
 ////                    destinationViewController.topicIndex = indexPath.row
 ////                    destinationViewController.selectedNote = newNote
+    ///            // set the details of the created new note that we will pass to the NotePageViewController
+    //            self.newNote.title = textField.text!
+    //            self.newNote.text = ""
+                //self.newNote.parentTopic = newTopic
 //                }
 //
 //
