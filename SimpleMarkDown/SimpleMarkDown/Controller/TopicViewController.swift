@@ -15,7 +15,8 @@ class TopicViewController: UITableViewController {
     
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext //to access the CoreData methods in our App Delegate.
     
-    
+    var tempNoteTitle: String?
+    var tempNoteParent: Topic?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -27,38 +28,38 @@ class TopicViewController: UITableViewController {
     
 //
 //    //MARK: - Add Button Method
-//    @IBAction func addButtonPressed(_ sender: UIBarButtonItem) {
-//
-//        var textField = UITextField() // initialize a text field that the user can type into
-//
-//        let alert = UIAlertController(title: "Add New Note Title", message: "", preferredStyle: .alert)
-//
-//        let action = UIAlertAction(title: "Add Note", style: .default) { (action) in
-//
-//            // set the details of the topic
-//            let newTopic = Topic(context: self.context)
-//            newTopic.name = textField.text! // create topic and set the title
-//
-//            // set the details of the created new note that we will pass to the NotePageViewController
+    @IBAction func addButtonPressed(_ sender: UIBarButtonItem) {
+
+        var textField = UITextField() // initialize a text field that the user can type into
+
+        let alert = UIAlertController(title: "Add New Note Title", message: "", preferredStyle: .alert)
+
+        let action = UIAlertAction(title: "Add Note", style: .default) { (action) in
+
+            // set the details of the topic
+            let newTopic = Topic(context: self.context)
+            newTopic.name = textField.text! // create topic and set the title
+
+            // set the details of the created new note that we will pass to the NotePageViewController
 //            self.newNote.title = textField.text!
 //            self.newNote.text = ""
-//            //self.newNote.parentTopic = newTopic
-//
-//            self.topicArray.append(newTopic) // add the new note to the array of notes
-//
+            //self.newNote.parentTopic = newTopic
+
+            self.topicArray.append(newTopic) // add the new note to the array of notes
+
 //            self.saveTopics()
-//        }
-//
-//        alert.addTextField { (alertTextField) in // add to the alert a text field, and its properties are going to be set in this alertTextField object
-//
-//            alertTextField.placeholder = "Create a new note"
-//            textField = alertTextField // set this as the textfield before the user adds text
-//        }
-//
-//        alert.addAction(action)
-//
-//        present(alert, animated: true, completion: nil)
-//    }
+        }
+
+        alert.addTextField { (alertTextField) in // add to the alert a text field, and its properties are going to be set in this alertTextField object
+
+            alertTextField.placeholder = "Create a new note"
+            textField = alertTextField // set this as the textfield before the user adds text
+        }
+
+        alert.addAction(action)
+
+        present(alert, animated: true, completion: nil)
+    }
 //
 //
 //
