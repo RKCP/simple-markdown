@@ -22,7 +22,7 @@ class TopicViewController: UITableViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         
-        //loadTopics()
+        loadTopics()
         print(FileManager.default.urls(for: .documentDirectory, in: .userDomainMask))
     }
     
@@ -55,30 +55,30 @@ class TopicViewController: UITableViewController {
 
         present(alert, animated: true, completion: nil)
     }
-//
-//
-//
-//    //MARK: - TableView DataSource Methods
-//    // How many rows in the tableview (list of notes) to populate
-//    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-//        return topicArray.count
-//    }
-//
-//
-//    // When we are at specific row, do XYZ
-//    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-//        let topic = topicArray[indexPath.row] // each single note in the array. this method automatically loops
-//
-//        let cell = tableView.dequeueReusableCell(withIdentifier: "TopicCell", for: indexPath) // add each category to the cell in the TableView
-//
-//        cell.textLabel?.text = topic.name // set the cell as the tableName
-//
-//        return cell
-//    }
-//
-//
-//
-//
+
+
+
+    //MARK: - TableView DataSource Methods
+    // How many rows in the tableview (list of notes) to populate
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return topicArray.count
+    }
+
+
+    // When we are at specific row, do XYZ
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let topic = topicArray[indexPath.row] // each single note in the array. this method automatically loops
+
+        let cell = tableView.dequeueReusableCell(withIdentifier: "TopicCell", for: indexPath) // add each category to the cell in the TableView
+
+        cell.textLabel?.text = topic.name // set the cell as the tableName
+
+        return cell
+    }
+
+
+
+
 //    //MARK: - Data Manipulation Methods
     func saveTopics() {
 
@@ -89,17 +89,17 @@ class TopicViewController: UITableViewController {
         }
         self.tableView.reloadData()
     }
-//
-////    func loadTopics(with request: NSFetchRequest<Topic> = Topic.fetchRequest()) { // either take a request as a parameter or use the default new request
-////
-////        do {
-////            topicArray = try context.fetch(request)
-////        } catch {
-////            print("Error fetching data (notes) from context: \(error)")
-////        }
-////
-////        tableView.reloadData()
-////    }
+
+    func loadTopics(with request: NSFetchRequest<Topic> = Topic.fetchRequest()) { // either take a request as a parameter or use the default new request
+
+        do {
+            topicArray = try context.fetch(request)
+        } catch {
+            print("Error fetching data (notes) from context: \(error)")
+        }
+
+        tableView.reloadData()
+    }
 //
 //
 //
