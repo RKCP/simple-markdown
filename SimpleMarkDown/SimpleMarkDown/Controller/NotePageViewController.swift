@@ -28,26 +28,38 @@ class NotePageViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        //loadAssociatedNote()
+        // call method to create and load associated note here, because the view has loaded, but has not 'appeared' yet. (viewDidAppear)
         
-        navBarTitle.title = "newNote.title!"
+        loadAssociatedNote()
+        
+        navBarTitle.title = noteToDisplay?.title
         textBox.text = noteToDisplay?.text
     }
     
     
     
-    //MARK: - Load Data function
-//    func loadAssociatedNote(with request: NSFetchRequest<Note> = Note.fetchRequest()) { // default is to create a new fetchRequest() but if we pass one, in the with external parameter, it will use that fetchRequest instead. (Such as the one used with the searchBar)
-//
+    //MARK: - Load and Create associated note function
+    func loadAssociatedNote(with request: NSFetchRequest<Note> = Note.fetchRequest()) { // default is to create a new fetchRequest() but if we pass one, in the with external parameter, it will use that fetchRequest instead. (Such as the one used with the searchBar)
+
+        
+        let newNote = Note(context: self.context)
+        newNote.title = "YOOOOO"
+        newNote.parentTopic = self.selectedTopic
+        noteToDisplay = newNote
+        
 //        do {
-//            newNote = try context.fetch(request)[topicIndex!]
+//            // for now just createa a new note. not loading a note.
+////            newNote = try context.fetch(request)[topicIndex!]
+//
+//
+//
 //            // since the relationship is one to one, there should only be 1 selected note.
 //            // debug line above to see what is returned from the fetch. what is in the array?
 //            print("asdasd")
 //        } catch {
 //            print("Error fetching data (note) from context: \(error)")
 //        }
-//    }
+    }
 
     
     //MARK: - Page View Methods
