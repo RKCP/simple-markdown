@@ -43,7 +43,7 @@ class NotePageViewController: UIViewController {
 
         
         let newNote = Note(context: self.context)
-        newNote.title = "YOOOOO"
+        newNote.title = selectedTopic?.name
         newNote.parentTopic = self.selectedTopic
         noteToDisplay = newNote
         
