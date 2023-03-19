@@ -8,7 +8,7 @@
 import UIKit
 import CoreData
 
-class NotePageViewController: UIViewController {
+class NotePageViewController: UIViewController{
     
     @IBOutlet weak var textBox: UITextView!
     @IBOutlet weak var navBarTitle: UINavigationItem!
@@ -20,49 +20,67 @@ class NotePageViewController: UIViewController {
     var noteToDisplay: Note?
     
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext //to access the CoreData methods in our App Delegate.
-    // set the details of the created new note that we will pass to the NotePageViewController
-//    destinationViewController.newNote.title = tempNoteTitle
-//    destinationViewController.newNote.text = ""
-//                    destinationViewController.newNote.parentTopic =
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        //loadAssociatedNote()
+        // call method to create and load associated note here, because the view has loaded, but has not 'appeared' yet. (viewDidAppear)
         
-        navBarTitle.title = "newNote.title!"
+        loadAssociatedNote()
+        
+        navBarTitle.title = noteToDisplay?.title
         textBox.text = noteToDisplay?.text
+        self.textBox.delegate = self // need to set the delegate for the textBox outlet created above or the delegate methods won't work.
     }
     
     
     
-    //MARK: - Load Data function
-//    func loadAssociatedNote(with request: NSFetchRequest<Note> = Note.fetchRequest()) { // default is to create a new fetchRequest() but if we pass one, in the with external parameter, it will use that fetchRequest instead. (Such as the one used with the searchBar)
-//
-//        do {
-//            newNote = try context.fetch(request)[topicIndex!]
-//            // since the relationship is one to one, there should only be 1 selected note.
-//            // debug line above to see what is returned from the fetch. what is in the array?
-//            print("asdasd")
-//        } catch {
-//            print("Error fetching data (note) from context: \(error)")
-//        }
-//    }
+    //MARK: - Load and Create associated note function
+    func loadAssociatedNote(with request: NSFetchRequest<Note> = Note.fetchRequest()) { // default is to create a new fetchRequest() but if we pass one, in the with external parameter, it will use that fetchRequest instead. (Such as the one used with the searchBar)
 
+        
+        let newNote = Note(context: self.context)
+        newNote.title = selectedTopic?.name
+        newNote.parentTopic = self.selectedTopic
+        noteToDisplay = newNote
+    }
     
-    //MARK: - Page View Methods
+    //MARK: - Save Note
     
+    func saveNote() {
+        
+        do {
+            try context.save()
+        } catch {
+            print("Error saving note: \(error)")
+        }
+    }
+
 }
+
+//MARK: - UITextView Delegate Methods (optional)
+extension NotePageViewController: UITextViewDelegate {
+
+    func textViewDidBeginEditing(_ textView: UITextView) {
+            print("exampleTextView: BEGIN EDIT")
+    }
+
+    func textViewDidEndEditing(_ textView: UITextView) {
+        textBox.resignFirstResponder()
+        saveNote()
+    }
+}
+
+
+
 
 // -------------goals-------------
-// when the user creates selects the add note button on the topic screen, it must createa a related note page (and segue to that note after it is created)
-// first lets update the title on the nav bar of a created note page to see if it is linked to the correct Topic.
 
-// save note when user exits the text box/note screen
-// make topic title appear as title of this note
+// save note when user:
+//      1. exits the note screen
+//      2. exits the text box itself (aka finishes editing)
+
 // link note to a list
 
-extension NotePageViewController: UITextViewDelegate {
-    
-    
-}
+
+// currently we are creating a new note each time we load a note, instead of loading an existing one... Need to fix this.
