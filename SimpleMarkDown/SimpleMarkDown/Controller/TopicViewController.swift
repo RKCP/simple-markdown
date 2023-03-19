@@ -25,7 +25,6 @@ class TopicViewController: UITableViewController {
         // Do any additional setup after loading the view.
         
         loadTopics()
-//        print(FileManager.default.urls(for: .documentDirectory, in: .userDomainMask))
         
     }
     
@@ -42,9 +41,6 @@ class TopicViewController: UITableViewController {
             // set the details of the topic
             let newTopic = Topic(context: self.context)
             newTopic.name = textField.text! // create topic and set the title
-//            let newNote = Note()
-//            self.associatedNote = newNote
-//            newTopic.childNote = self.associatedNote
             
             self.tempNoteTitle = textField.text!
 
@@ -134,7 +130,6 @@ class TopicViewController: UITableViewController {
                     destinationViewController.selectedTopic = topicArray[indexPath.row] // the selectedNote we want to set is the note from the array in this class, with the index of whatever the user selects
                     destinationViewController.topicIndex = indexPath.row
                     destinationViewController.noteToDisplay = associatedNote
-                    print("jbh n")
                 }
 
 

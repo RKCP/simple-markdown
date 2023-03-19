@@ -20,10 +20,6 @@ class NotePageViewController: UIViewController{
     var noteToDisplay: Note?
     
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext //to access the CoreData methods in our App Delegate.
-    // set the details of the created new note that we will pass to the NotePageViewController
-//    destinationViewController.newNote.title = tempNoteTitle
-//    destinationViewController.newNote.text = ""
-//                    destinationViewController.newNote.parentTopic =
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -34,7 +30,7 @@ class NotePageViewController: UIViewController{
         
         navBarTitle.title = noteToDisplay?.title
         textBox.text = noteToDisplay?.text
-        self.textBox.delegate = self
+        self.textBox.delegate = self // need to set the delegate for the textBox outlet created above or the delegate methods won't work.
     }
     
     
@@ -47,19 +43,6 @@ class NotePageViewController: UIViewController{
         newNote.title = selectedTopic?.name
         newNote.parentTopic = self.selectedTopic
         noteToDisplay = newNote
-        
-//        do {
-//            // for now just createa a new note. not loading a note.
-////            newNote = try context.fetch(request)[topicIndex!]
-//
-//
-//
-//            // since the relationship is one to one, there should only be 1 selected note.
-//            // debug line above to see what is returned from the fetch. what is in the array?
-//            print("asdasd")
-//        } catch {
-//            print("Error fetching data (note) from context: \(error)")
-//        }
     }
     
     //MARK: - Save Note
@@ -72,23 +55,8 @@ class NotePageViewController: UIViewController{
             print("Error saving note: \(error)")
         }
     }
-    
 
-    
-    //MARK: - UITextView Methods
-
-    
-    
-    
 }
-
-// -------------goals-------------
-
-// save note when user:
-//      1. exits the note screen
-//      2. exits the text box itself (aka finishes editing)
-
-// link note to a list
 
 //MARK: - UITextView Delegate Methods (optional)
 extension NotePageViewController: UITextViewDelegate {
@@ -101,3 +69,14 @@ extension NotePageViewController: UITextViewDelegate {
             print("exampleTextView: END EDIT")
     }
 }
+
+
+
+
+// -------------goals-------------
+
+// save note when user:
+//      1. exits the note screen
+//      2. exits the text box itself (aka finishes editing)
+
+// link note to a list
