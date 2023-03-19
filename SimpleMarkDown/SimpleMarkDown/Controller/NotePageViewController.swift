@@ -8,7 +8,7 @@
 import UIKit
 import CoreData
 
-class NotePageViewController: UIViewController {
+class NotePageViewController: UIViewController{
     
     @IBOutlet weak var textBox: UITextView!
     @IBOutlet weak var navBarTitle: UINavigationItem!
@@ -34,6 +34,7 @@ class NotePageViewController: UIViewController {
         
         navBarTitle.title = noteToDisplay?.title
         textBox.text = noteToDisplay?.text
+        self.textBox.delegate = self
     }
     
     
@@ -74,7 +75,8 @@ class NotePageViewController: UIViewController {
     
 
     
-    //MARK: - Methods to call save func
+    //MARK: - UITextView Methods
+
     
     
     
@@ -88,7 +90,14 @@ class NotePageViewController: UIViewController {
 
 // link note to a list
 
+//MARK: - UITextView Delegate Methods (optional)
 extension NotePageViewController: UITextViewDelegate {
-    
-    
+
+    func textViewDidBeginEditing(_ textView: UITextView) {
+            print("exampleTextView: BEGIN EDIT")
+    }
+
+    func textViewDidEndEditing(_ textView: UITextView) {
+            print("exampleTextView: END EDIT")
+    }
 }
