@@ -60,18 +60,32 @@ class NotePageViewController: UIViewController {
 //            print("Error fetching data (note) from context: \(error)")
 //        }
     }
+    
+    //MARK: - Save Note
+    
+    func saveNote() {
+        
+        do {
+            try context.save()
+        } catch {
+            print("Error saving note: \(error)")
+        }
+    }
+    
 
     
-    //MARK: - Page View Methods
+    //MARK: - Methods to call save func
+    
+    
     
 }
 
 // -------------goals-------------
-// when the user creates selects the add note button on the topic screen, it must createa a related note page (and segue to that note after it is created)
-// first lets update the title on the nav bar of a created note page to see if it is linked to the correct Topic.
 
-// save note when user exits the text box/note screen
-// make topic title appear as title of this note
+// save note when user:
+//      1. exits the note screen
+//      2. exits the text box itself (aka finishes editing)
+
 // link note to a list
 
 extension NotePageViewController: UITextViewDelegate {
