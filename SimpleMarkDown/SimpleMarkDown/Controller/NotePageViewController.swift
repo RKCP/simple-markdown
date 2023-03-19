@@ -66,7 +66,8 @@ extension NotePageViewController: UITextViewDelegate {
     }
 
     func textViewDidEndEditing(_ textView: UITextView) {
-            print("exampleTextView: END EDIT")
+        textBox.resignFirstResponder()
+        saveNote()
     }
 }
 
@@ -80,3 +81,6 @@ extension NotePageViewController: UITextViewDelegate {
 //      2. exits the text box itself (aka finishes editing)
 
 // link note to a list
+
+
+// currently we are creating a new note each time we load a note, instead of loading an existing one... Need to fix this.
