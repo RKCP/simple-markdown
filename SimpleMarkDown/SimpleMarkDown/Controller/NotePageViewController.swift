@@ -38,13 +38,15 @@ class NotePageViewController: UIViewController{
     
     //MARK: - Load and Create associated note function
     func loadAssociatedNote(with request: NSFetchRequest<Note> = Note.fetchRequest()) { // default is to create a new fetchRequest() but if we pass one, in the with external parameter, it will use that fetchRequest instead. (Such as the one used with the searchBar)
-
+        
         let topicPredicate = NSPredicate(format: "parentTopic.name MATCHES %@", selectedTopic!.name!)
         
         request.predicate = topicPredicate
         
         do {
             noteToDisplay = try context.fetch(request)[0]
+            
+            //condition, if fetch request [0] doesn't have anything, create a new note...
         } catch {
             print("Error fetching data (note) from context: \(error)")
         }
