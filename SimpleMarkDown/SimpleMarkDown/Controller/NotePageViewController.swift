@@ -26,7 +26,8 @@ class NotePageViewController: UIViewController{
         
         // call method to create and load associated note here, because the view has loaded, but has not 'appeared' yet. (viewDidAppear)
         
-        loadAssociatedNote()
+        let request = fetchNote()
+        loadAssociatedNote(with: request)
         
         navBarTitle.title = noteToDisplay?.title
         textBox.text = noteToDisplay?.text
@@ -38,11 +39,20 @@ class NotePageViewController: UIViewController{
     //MARK: - Load and Create associated note function
     func loadAssociatedNote(with request: NSFetchRequest<Note> = Note.fetchRequest()) { // default is to create a new fetchRequest() but if we pass one, in the with external parameter, it will use that fetchRequest instead. (Such as the one used with the searchBar)
 
+        let topicPredicate = NSPredicate(format: "parentTopic.name MATCHES %@", selectedTopic!.name!)
         
-        let newNote = Note(context: self.context)
-        newNote.title = selectedTopic?.name
-        newNote.parentTopic = self.selectedTopic
-        noteToDisplay = newNote
+        request.predicate = topicPredicate
+        
+        do {
+            noteToDisplay = try context.fetch(request)[0]
+        } catch {
+            print("Error fetching data (note) from context: \(error)")
+        }
+        
+//        let newNote = Note(context: self.context)
+//        newNote.title = selectedTopic?.name
+//        newNote.parentTopic = self.selectedTopic
+//        noteToDisplay = newNote
     }
     
     //MARK: - Save Note
@@ -54,6 +64,19 @@ class NotePageViewController: UIViewController{
         } catch {
             print("Error saving note: \(error)")
         }
+    }
+    
+    //MARK: - Fetch Note
+    
+    func fetchNote() -> NSFetchRequest<Note> {
+        
+        let request: NSFetchRequest<Note> = Note.fetchRequest()
+        
+        let titleToSearch = selectedTopic!.name!
+        
+        request.predicate = NSPredicate(format: "title CONTAINS[cd] %@", titleToSearch)
+        
+        return request
     }
 
 }
