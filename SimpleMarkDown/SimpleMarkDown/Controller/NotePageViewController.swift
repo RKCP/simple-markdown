@@ -46,7 +46,12 @@ class NotePageViewController: UIViewController{
         do {
             noteToDisplay = try context.fetch(request)[0]
             
-            //condition, if fetch request [0] doesn't have anything, create a new note...
+            //condition, if fetch request[0] doesn't have anything, create a new note...
+            if(noteToDisplay == nil) {
+                noteToDisplay = Note(context: self.context)
+                noteToDisplay?.title = selectedTopic?.name
+                noteToDisplay?.parentTopic = self.selectedTopic
+            }
         } catch {
             print("Error fetching data (note) from context: \(error)")
         }
