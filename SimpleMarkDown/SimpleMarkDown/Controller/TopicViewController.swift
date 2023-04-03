@@ -44,9 +44,14 @@ class TopicViewController: UITableViewController {
             
             self.tempNoteTitle = textField.text!
 
-            self.topicArray.append(newTopic) // add the new note to the array of notes
+            self.topicArray.append(newTopic) // add the new topic to the array of topics
 
             self.saveTopics()
+            
+            // create a note and link to topic....
+            self.associatedNote = Note(context: self.context)
+            self.associatedNote?.title = newTopic.name
+            self.associatedNote?.parentTopic = newTopic
         }
 
         alert.addTextField { (alertTextField) in // add to the alert a text field, and its properties are going to be set in this alertTextField object

@@ -43,18 +43,36 @@ class NotePageViewController: UIViewController{
         
         request.predicate = topicPredicate
         
-        do {
-            noteToDisplay = try context.fetch(request)[0]
-            
-            //condition, if fetch request[0] doesn't have anything, create a new note...
-            if(noteToDisplay == nil) {
-                noteToDisplay = Note(context: self.context)
-                noteToDisplay?.title = selectedTopic?.name
-                noteToDisplay?.parentTopic = self.selectedTopic
+        if (noteToDisplay == nil) {
+            noteToDisplay = Note(context: self.context)
+            noteToDisplay?.title = selectedTopic?.name
+            noteToDisplay?.parentTopic = self.selectedTopic
+            saveNote()
+        } else {
+            do {
+                noteToDisplay = try context.fetch(request)[0]
+                //condition, if fetch request[0] doesn't have anything, create a new note...
+            } catch {
+                print("Error fetching data (note) from context: \(error)")
             }
-        } catch {
-            print("Error fetching data (note) from context: \(error)")
         }
+        
+        // noteToDisplay always appearing as nil.... Perhaps it isn't being linked correctly....
+        
+        
+//
+//        do {
+//            noteToDisplay = try context.fetch(request)[0]
+//
+//            //condition, if fetch request[0] doesn't have anything, create a new note...
+//            if(noteToDisplay == nil) {
+//                noteToDisplay = Note(context: self.context)
+//                noteToDisplay?.title = selectedTopic?.name
+//                noteToDisplay?.parentTopic = self.selectedTopic
+//            }
+//        } catch {
+//            print("Error fetching data (note) from context: \(error)")
+//        }
         
 //        let newNote = Note(context: self.context)
 //        newNote.title = selectedTopic?.name
@@ -68,6 +86,7 @@ class NotePageViewController: UIViewController{
         
         do {
             try context.save()
+            print("Note Saved!")
         } catch {
             print("Error saving note: \(error)")
         }
