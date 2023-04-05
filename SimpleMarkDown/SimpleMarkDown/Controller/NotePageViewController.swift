@@ -82,6 +82,11 @@ class NotePageViewController: UIViewController{
     
     //MARK: - Save Note
     
+    func saveTextViewContents() {
+        noteToDisplay!.text = textBox.text
+        // Add any other code you need to store the note.
+    }
+    
     func saveNote() {
         
         do {
@@ -116,6 +121,7 @@ extension NotePageViewController: UITextViewDelegate {
 
     func textViewDidEndEditing(_ textView: UITextView) {
         textBox.resignFirstResponder()
+        saveTextViewContents()
         saveNote()
     }
 }
@@ -133,3 +139,5 @@ extension NotePageViewController: UITextViewDelegate {
 
 
 // currently we are creating a new note each time we load a note, instead of loading an existing one... Need to fix this.
+
+// always send a new note or a nil note from topic controller segue to here.

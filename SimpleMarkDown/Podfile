@@ -7,6 +7,5 @@ target 'SimpleMarkDown' do
   
   pod 'CLTypingLabel'
   pod 'IQKeyboardManagerSwift'
-  pod 'CoreStore'
 
 end
