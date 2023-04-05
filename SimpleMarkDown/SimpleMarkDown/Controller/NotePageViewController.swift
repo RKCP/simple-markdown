@@ -43,12 +43,12 @@ class NotePageViewController: UIViewController{
         
         request.predicate = topicPredicate
         
-        if (noteToDisplay == nil) {
-            noteToDisplay = Note(context: self.context)
-            noteToDisplay?.title = selectedTopic?.name
-            noteToDisplay?.parentTopic = self.selectedTopic
-            saveNote()
-        } else {
+//        if (noteToDisplay == nil) {
+//            noteToDisplay = Note(context: self.context)
+//            noteToDisplay?.title = selectedTopic?.name
+//            noteToDisplay?.parentTopic = self.selectedTopic
+//            saveNote()
+//        } else {
             do {
                 noteToDisplay = try context.fetch(request)[0]
                 //condition, if fetch request[0] doesn't have anything, create a new note...
@@ -56,28 +56,6 @@ class NotePageViewController: UIViewController{
                 print("Error fetching data (note) from context: \(error)")
             }
         }
-        
-        // noteToDisplay always appearing as nil.... Perhaps it isn't being linked correctly....
-        
-        
-//
-//        do {
-//            noteToDisplay = try context.fetch(request)[0]
-//
-//            //condition, if fetch request[0] doesn't have anything, create a new note...
-//            if(noteToDisplay == nil) {
-//                noteToDisplay = Note(context: self.context)
-//                noteToDisplay?.title = selectedTopic?.name
-//                noteToDisplay?.parentTopic = self.selectedTopic
-//            }
-//        } catch {
-//            print("Error fetching data (note) from context: \(error)")
-//        }
-        
-//        let newNote = Note(context: self.context)
-//        newNote.title = selectedTopic?.name
-//        newNote.parentTopic = self.selectedTopic
-//        noteToDisplay = newNote
     }
     
     //MARK: - Save Note
@@ -127,17 +105,5 @@ extension NotePageViewController: UITextViewDelegate {
 }
 
 
-
-
-// -------------goals-------------
-
-// save note when user:
-//      1. exits the note screen
-//      2. exits the text box itself (aka finishes editing)
-
-// link note to a list
-
-
-// currently we are creating a new note each time we load a note, instead of loading an existing one... Need to fix this.
 
 // always send a new note or a nil note from topic controller segue to here.
