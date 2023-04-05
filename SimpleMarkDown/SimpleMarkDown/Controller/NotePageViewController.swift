@@ -49,12 +49,19 @@ class NotePageViewController: UIViewController{
 //            noteToDisplay?.parentTopic = self.selectedTopic
 //            saveNote()
 //        } else {
-            do {
-                noteToDisplay = try context.fetch(request)[0]
-                //condition, if fetch request[0] doesn't have anything, create a new note...
-            } catch {
-                print("Error fetching data (note) from context: \(error)")
-            }
+//            do {
+//                noteToDisplay = try context.fetch(request)[0]
+//                //condition, if fetch request[0] doesn't have anything, create a new note...
+//            } catch {
+//                print("Error fetching data (note) from context: \(error)")
+//            }
+//        }
+        
+        do {
+            noteToDisplay = try context.fetch(request)[0]
+            //condition, if fetch request[0] doesn't have anything, create a new note...
+        } catch {
+            print("Error fetching data (note) from context: \(error)")
         }
     }
     
@@ -103,7 +110,5 @@ extension NotePageViewController: UITextViewDelegate {
         saveNote()
     }
 }
-
-
 
 // always send a new note or a nil note from topic controller segue to here.
