@@ -2,7 +2,7 @@
 
 Simple Markdown is a lightweight note-taking app that uses Markdown syntax for formatting. With Simple Markdown, you can quickly jot down notes, create to-do lists, and keep track of your thoughts and ideas.
 
-##Features
+## Features
 
     Markdown formatting: Simple Markdown uses the popular Markdown syntax for formatting your notes, making it easy to create headings, lists, links, and more.
 
@@ -12,7 +12,7 @@ Simple Markdown is a lightweight note-taking app that uses Markdown syntax for f
 
     Sharing: You can easily share your notes with others using the share button in the app.
 
-##Getting started
+## Getting started
 
 To get started with Simple Markdown, simply download the app from the App Store, and open it on your device. You can start typing your notes immediately, using Markdown syntax to format your text.
 Editing notes
