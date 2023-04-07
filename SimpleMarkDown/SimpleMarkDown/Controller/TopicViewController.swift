@@ -14,10 +14,7 @@ class TopicViewController: UITableViewController {
     
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext //to access the CoreData methods in our App Delegate.
     
-    var tempNoteTitle: String?
-    var tempNoteParent: Topic?
-    
-    // note associated with this topic...
+    // The note associated with the Topic at this point in time, the topic we are creating.
     var associatedNote: Note?
 
     override func viewDidLoad() {
@@ -28,11 +25,12 @@ class TopicViewController: UITableViewController {
         
     }
     
-//
-//    //MARK: - Add Button Method
+    
+    
+    //MARK: - Add Button Method
     @IBAction func addButtonPressed(_ sender: UIBarButtonItem) {
 
-        var textField = UITextField() // initialize a text field that the user can type into
+        var addButtonTextField = UITextField() // initialize a text field that the user can type into
 
         let alert = UIAlertController(title: "Add New Note Title", message: "", preferredStyle: .alert)
 
@@ -40,9 +38,7 @@ class TopicViewController: UITableViewController {
 
             // set the details of the topic
             let newTopic = Topic(context: self.context)
-            newTopic.name = textField.text! // create topic and set the title
-            
-            self.tempNoteTitle = textField.text!
+            newTopic.name = addButtonTextField.text! // create topic and set the title
 
             self.topicArray.append(newTopic) // add the new topic to the array of topics
 
@@ -57,7 +53,7 @@ class TopicViewController: UITableViewController {
         alert.addTextField { (alertTextField) in // add to the alert a text field, and its properties are going to be set in this alertTextField object
 
             alertTextField.placeholder = "Create a new note"
-            textField = alertTextField // set this as the textfield before the user adds text
+            addButtonTextField = alertTextField // set this as the textfield before the user adds text
         }
 
         alert.addAction(action)
@@ -88,7 +84,7 @@ class TopicViewController: UITableViewController {
 
 
 
-//    //MARK: - Data Manipulation Methods
+    //MARK: - Data Manipulation Methods
     func saveTopics() {
 
         do {
@@ -132,9 +128,8 @@ class TopicViewController: UITableViewController {
                 let destinationViewController = segue.destination as! NotePageViewController // specify the exact datatype the destination will be
 
                 if let indexPath = tableView.indexPathForSelectedRow {
-                    destinationViewController.selectedTopic = topicArray[indexPath.row] // the selectedNote we want to set is the note from the array in this class, with the index of whatever the user selects
-                    destinationViewController.topicIndex = indexPath.row
-                    destinationViewController.noteToDisplay = associatedNote
+                    destinationViewController.selectedTopic = topicArray[indexPath.row] // We want to get the topic from the array in this class, with the index of whatever the user selects
+                    destinationViewController.noteToDisplay = associatedNote // pass the associatedNote we created here to the NotePageViewController. This will only be passed if the add button was pressed this time around. If not, we will just pass nil here, and then retrieve a note on the next page.
                 }
 
 

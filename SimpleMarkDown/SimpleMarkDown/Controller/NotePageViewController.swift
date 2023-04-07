@@ -8,12 +8,10 @@
 import UIKit
 import CoreData
 
-class NotePageViewController: UIViewController{
+class NotePageViewController: UIViewController {
     
     @IBOutlet weak var textBox: UITextView!
     @IBOutlet weak var navBarTitle: UINavigationItem!
-    
-    var topicIndex: Int?
     
     var selectedTopic: Topic?
     
@@ -21,13 +19,14 @@ class NotePageViewController: UIViewController{
     
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext //to access the CoreData methods in our App Delegate.
     
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         // call method to create and load associated note here, because the view has loaded, but has not 'appeared' yet. (viewDidAppear)
         
-        let request = fetchNote()
-        loadAssociatedNote(with: request)
+        let request = fetchNote() // build a NSFetchRequest based on the selectedTopic title, fetching a Note with the same title as the selectedTopic title
+        loadAssociatedNote(with: request) // pass that request to the loadAssociatedNote method and load a note if there is one. This request will be nil if it is a new topic/note.
         
         navBarTitle.title = noteToDisplay?.title
         textBox.text = noteToDisplay?.text
@@ -43,23 +42,8 @@ class NotePageViewController: UIViewController{
         
         request.predicate = topicPredicate
         
-//        if (noteToDisplay == nil) {
-//            noteToDisplay = Note(context: self.context)
-//            noteToDisplay?.title = selectedTopic?.name
-//            noteToDisplay?.parentTopic = self.selectedTopic
-//            saveNote()
-//        } else {
-//            do {
-//                noteToDisplay = try context.fetch(request)[0]
-//                //condition, if fetch request[0] doesn't have anything, create a new note...
-//            } catch {
-//                print("Error fetching data (note) from context: \(error)")
-//            }
-//        }
-        
         do {
             noteToDisplay = try context.fetch(request)[0]
-            //condition, if fetch request[0] doesn't have anything, create a new note...
         } catch {
             print("Error fetching data (note) from context: \(error)")
         }
@@ -90,7 +74,7 @@ class NotePageViewController: UIViewController{
         
         let titleToSearch = selectedTopic!.name!
         
-        request.predicate = NSPredicate(format: "title CONTAINS[cd] %@", titleToSearch)
+        request.predicate = NSPredicate(format: "title CONTAINS[cd] %@", titleToSearch) // query based on the topic name
         
         return request
     }
@@ -112,3 +96,4 @@ extension NotePageViewController: UITextViewDelegate {
 }
 
 // always send a new note or a nil note from topic controller segue to here.
+// need a way to cancel adding note
