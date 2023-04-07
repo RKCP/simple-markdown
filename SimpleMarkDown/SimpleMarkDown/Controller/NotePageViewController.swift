@@ -95,5 +95,3 @@ extension NotePageViewController: UITextViewDelegate {
     }
 }
 
-// always send a new note or a nil note from topic controller segue to here.
-// need a way to cancel adding note
