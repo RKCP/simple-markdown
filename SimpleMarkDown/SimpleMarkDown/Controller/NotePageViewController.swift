@@ -78,6 +78,32 @@ class NotePageViewController: UIViewController {
         
         return request
     }
+    
+    //MARK: - Markdown Variables and methods
+    
+    func createMarkdownText() {
+        
+        // Define the code block text
+        let codeText = "func myFunction() {\n\tprint(\"Hello, world!\")\n}"
+
+        // Define the font for the code block
+        let codeFont = UIFont(name: "Menlo-Regular", size: 14.0) ?? UIFont.systemFont(ofSize: 14.0)
+
+        // Define the attributes for the code block
+        let codeAttributes: [NSAttributedString.Key: Any] = [
+            .font: codeFont,
+            .foregroundColor: UIColor.systemGray,
+            .backgroundColor: UIColor.systemGray5,
+            .paragraphStyle: NSParagraphStyle.default
+        ]
+
+        // Create the attributed string for the code block
+        let codeAttributedString = NSAttributedString(string: codeText, attributes: codeAttributes)
+
+        // Add the code block attributed string to the UITextView
+        textBox.textStorage.append(codeAttributedString)
+    }
+
 
 }
 
@@ -92,6 +118,6 @@ extension NotePageViewController: UITextViewDelegate {
         textBox.resignFirstResponder()
         saveTextViewContents()
         saveNote()
+        createMarkdownText()
     }
 }
-
